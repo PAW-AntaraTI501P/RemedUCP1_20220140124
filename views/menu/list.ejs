@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Menu CAFE WADIDAW</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .action-btn {
+            padding: 8px 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        .edit-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .delete-btn {
+            background-color: #ffc107;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Daftar Menu</h1>
+    <a href="/menu/add"><button class="action-btn">Tambah Menu</button></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Deskripsi</th>
+                <th>Harga (Rp)</th>
+                <th>Tipe</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% menuItems.forEach(item => { %>
+                <tr>
+                    <td><%= item.nama %></td>
+                    <td><%= item.deskripsi %></td>
+                    <td>Rp <%= Number(item.harga).toLocaleString('id-ID') %></td>
+                    <td><%= item.tipe.toUpperCase() %></td>
+                    <td>
+                        <a href="/menu/edit/<%= item.id %>"><button class="edit-btn">Edit</button></a>
+                        <form action="/menu/delete/<%= item.id %>" method="POST" style="display:inline;">
+                            <button type="submit" class="delete-btn" onclick="return confirm('Yakin ingin menghapus menu ini?');">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>

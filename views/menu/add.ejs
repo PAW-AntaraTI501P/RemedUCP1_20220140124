@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Menu Baru</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tambah Menu Baru</h1>
+    <form action="/menu" method="POST">
+        <label for="nama">Nama Menu:</label>
+        <input type="text" id="nama" name="nama" required>
+
+        <label for="deskripsi">Deskripsi:</label>
+        <input type="text" id="deskripsi" name="deskripsi" required>
+
+        <label for="harga">Harga (Rp):</label>
+        <input type="number" id="harga" name="harga" required>
+
+        <label for="tipe">Tipe:</label>
+        <select id="tipe" name="tipe" required>
+            <option value="makanan">Makanan</option>
+            <option value="minuman">Minuman</option>
+        </select>
+        <button type="submit">Tambah Menu</button>
+        <a href="/menu"><button type="button">Batal</button></a>
+    </form>
+</html>
